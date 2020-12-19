@@ -10,12 +10,12 @@ var morgan = require('morgan')
 app.use(morgan('combined'))
 
 // Routes
-app.all('/*', (req, res) => {
+app.all('/echo/*', (req, res) => {
   res.send(`Request received: ${req.method} - ${req.path}`);
 });
 
 // Error handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   res.status(500).send('Internal Serverless Error: ' + err);
 });
 
