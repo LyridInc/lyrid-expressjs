@@ -1,5 +1,4 @@
 /* eslint-disable toplevel/no-toplevel-side-effect */
-const debug = require('debug')('express-sharp')
 const etag = require('etag')
 const express = require('express')
 const expressValidator = require('express-validator')
@@ -94,7 +93,6 @@ module.exports = function(options = {}) {
         return
       }
 
-      debug('Requesting:', imageUrl)
       let response
       try {
         response = await got(imageUrl, {
@@ -105,7 +103,6 @@ module.exports = function(options = {}) {
         return
       }
 
-      debug('Requested %s. Status: %s', imageUrl, response.statusCode)
 
       res.status(response.statusCode)
       const inputFormat = response.headers['content-type'] || ''
