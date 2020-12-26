@@ -4,8 +4,15 @@
 const express = require('express');
 const app = express();
 const scale = require('../scale')
+var cors = require('cors')
 
-// logging middleware
+var corsOptions = {
+  origin: [ 'http://localhost:5000' ],
+  credentials: true,
+}
+
+app.use(cors(corsOptions))
+
 var morgan = require('morgan')
 app.use(morgan('combined'))
 
